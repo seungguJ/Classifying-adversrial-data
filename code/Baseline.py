@@ -32,7 +32,7 @@ total = 0
 attack = PGD(model, eps=0.01, steps=10)
 for data in testloader:
     images, labels = data[0].to(device), data[1].to(device)
-    adv_images = attack(images, device=device)
+    adv_images = attack(images, labels)
     outputs = model(images)
     adv_outputs = model(adv_images)
     _, predicted = torch.max(outputs.data, 1) # Probability, index
